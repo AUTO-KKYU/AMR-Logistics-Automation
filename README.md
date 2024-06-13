@@ -11,10 +11,11 @@
   * [2. 📋Role Contributions](#2-role-contributions)
     + [2.1. System Architecture](#21-system-architecture)
     + [2.2. Hardware Architecture](#22-hardware-architecture)
-    + [2.3. 3D Pose Estimation](#23-3d-pose-estimation)
-      - [2.3.1. Camera Calibration](#231-camera-calibration)
-      - [2.3.2. ArUCo Navigation](#232-aruco-navigation)
-    + [2.4. Human Following](#24-human-following)
+    + [2.3. Software Architecture](#23-software-architecture)
+    + [2.4. 3D Pose Estimation](#24-3d-pose-estimation)
+      - [2.4.1. Camera Calibration](#241-camera-calibration)
+      - [2.4.2. ArUCo Navigation](#242-aruco-navigation)
+    + [2.5. Human Following](#25-human-following)
   * [3. ✅Prerequisite](#3-prerequisite)
 
 
@@ -67,15 +68,19 @@
 ### 2.2. Hardware Architecture
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/5f911581-c86e-44b8-a48b-21adc2f979da">
 
-### 2.3. 3D Pose Estimation
+### 2.3. Software Architecture
+<img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/e0b8a28a-6034-4173-8754-e2a6924e7939">
 
-#### 2.3.1. Camera Calibration
+
+### 2.4. 3D Pose Estimation
+
+#### 2.4.1. Camera Calibration
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/ed869dcf-58b9-48e1-8ad6-d9a389a769ce">
 
-#### 2.3.2. ArUCo Navigation
+#### 2.4.2. ArUCo Navigation
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/acb06277-3130-40a1-b1d1-ec2a3675a078">
 
-### 2.4. Human Following
+### 2.5. Human Following
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/eeb94530-05e6-4cb7-ba7e-3fccffb6b9e1">
 
 ## 3. ✅Prerequisite
