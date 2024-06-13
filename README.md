@@ -8,6 +8,13 @@
     + [1.1. Project Overview](#11-project-overview)
     + [1.2. Project Position](#12-project-position)
     + [1.3. Tech Stack](#13-tech-stack)
+  * [2. 📋Role Contributions](#2-role-contributions)
+    + [2.1. System Architecture](#21-system-architecture)
+    + [2.2. Hardware Architecture](#22-hardware-architecture)
+    + [2.3. 3D Pose Estimation](#23-3d-pose-estimation)
+      - [2.3.1. Camera Calibration](#231-camera-calibration)
+      - [2.3.2. ArUCo Navigation](#232-aruco-navigation)
+    + [2.4. Human Following](#24-human-following)
 
 ## 1. 🤖Project Introduction
 **Duration: 2024.04.17 - 2024.06.13**
@@ -49,3 +56,22 @@
 |**H/W**|<img src="https://img.shields.io/badge/-RaspberryPi 4-C51A4A?style=for-the-badge&logo=Raspberry-Pi"> <img src="https://img.shields.io/badge/-Arduino Mega-00979D?style=for-the-badge&logo=Arduino&logoColor=white">|
 |**COMMUNICATION**|<img src="https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white"> <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white">  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">|
 
+## 2. 📋Role Contributions
+
+### 2.1. System Architecture
+
+<img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/9a9e5e40-1a1d-45e5-b85e-094c319c2f4b">
+
+### 2.2. Hardware Architecture
+<img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/5f911581-c86e-44b8-a48b-21adc2f979da">
+
+### 2.3. 3D Pose Estimation
+
+#### 2.3.1. Camera Calibration
+<img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/ed869dcf-58b9-48e1-8ad6-d9a389a769ce">
+
+#### 2.3.2. ArUCo Navigation
+<img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/acb06277-3130-40a1-b1d1-ec2a3675a078">
+
+### 2.4. Human Following
+<img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/eeb94530-05e6-4cb7-ba7e-3fccffb6b9e1">
