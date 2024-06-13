@@ -8,6 +8,7 @@
     + [1.1. Project Overview](#11-project-overview)
     + [1.2. Project Position](#12-project-position)
     + [1.3. Tech Stack](#13-tech-stack)
+    + [1.4. Reference](#14-reference)
   * [2. 📋Role Contributions](#2-role-contributions)
     + [2.1. System Architecture](#21-system-architecture)
     + [2.2. Hardware Architecture](#22-hardware-architecture)
@@ -17,6 +18,7 @@
       - [2.4.2. ArUCo Navigation](#242-aruco-navigation)
     + [2.5. Human Following](#25-human-following)
   * [3. ✅Prerequisite](#3-prerequisite)
+  * [4. ⏩Usage](#4-usage)
 
 
 ## 1. 🤖Project Introduction
@@ -58,6 +60,10 @@
 |**TECH**|<img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"> <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white"> <img src="https://img.shields.io/badge/ros2-%2322314E?style=for-the-badge&logo=ros&logoColor=white"> <img src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white"> <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white"> <img src="https://img.shields.io/badge/PyQt5-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white"> |
 |**H/W**|<img src="https://img.shields.io/badge/-RaspberryPi 4-C51A4A?style=for-the-badge&logo=Raspberry-Pi"> <img src="https://img.shields.io/badge/-Arduino Mega-00979D?style=for-the-badge&logo=Arduino&logoColor=white">|
 |**COMMUNICATION**|<img src="https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white"> <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white">  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">|
+
+### 1.4. Reference
+- Presentation : https://docs.google.com/presentation/d/1zWYl33Bm2CBIjSyX9Pe78l9VBHL1Ysp2sf91z0QALls/edit?usp=drive_link
+- Additional Information, Contact Email: dknjy3313@gmail.com
 
 ## 2. 📋Role Contributions
 
@@ -155,3 +161,113 @@ sudo chown root:gpio /dev/gpiomem
 sudo chmod g+rw /dev/gpiomem
 sudo chmod a+rw /dev/i2c-*
 ```
+
+## 4. ⏩Usage
+
+**General Setup**
+
+```sh
+git clone https://github.com/AUTO-KKYU/AMR-Logistics-Automation.git
+
+cd ros-repo-2/robot
+colcon build
+source ./install/local_setup.bash
+
+cd ../server
+colcon build
+source ./install/local_setup.bash
+```
+
+*- Recommend: Use the SSH method for remote access*
+- ex) ssh -X your_rasp_name@your_rasp_ip
+  
+**Robot 1/2/3 PC (Raspberry Pi PC)**
+- Domain ID : 91 / 92 / 93
+
+```sh
+# bringup robot : arduino (encoder motor) + Raspberry (YD LIDAR)
+ros2 launch minibot_bringup bringup_robot.launch.py
+
+# Aruco & Step motor (fork lift) Node
+ros2 launch robot_aruco aruco_detect.launch.py
+
+# human following mode
+ros2 launch human_following following.launch.py
+```
+
+**Robot 1/2/3 PC (LOCAL PC)**
+```sh
+export ROS_DOMAIN_ID = 91 / 92 / 93
+
+# check ROS_DOMAIN_ID SETTINGS
+printenv grep -i ROS_DOMAIN_ID
+
+source /opt/ros/humble/setup.bash
+source ~/.bashrc
+
+# Robot Controller
+ros2 run robot_controller robot_controller
+
+# slam toolbox + nav2 package
+ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/re_map.yaml
+
+# rviz visualization
+rviz2 -d `ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/rviz/nav2_view.rviz
+```
+
+**Server**
+```sh
+export ROS_DOMAIN_ID = 90
+source /opt/ros/humble/setup.bash
+source ~/.bashrc
+
+# websocket bridge
+ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+
+# ros2 domain bridge
+ros2 run domain_bridge domain_bridge ~/your_path/server/config/bridge_config.yaml
+
+# task allocator server
+ros2 launch task_manager task_manager_launch.py
+```
+
+**Consumer GUI**
+```sh
+(venv) (root folder) python3 gui/consumer/src/ui_main.py
+```
+
+**Manager GUI**
+```sh
+(inside gui folder) ros2 run manager.pkg manager_main.py
+```
+
+**Robot test Service**
+```sh
+# aruco control service call
+# location : I1,I2,I1 / O1,O2,O3 / P1,P2,P3 / R1,R2 / A1,A2 / B1,B2 / C1,C2
+# direction : forward, backward
+ros2 service call /aruco_control task_msgs/srv/ArucoCommand "{location: O1, direction: forward}"
+
+# step control service call
+# floor : 1,2
+# direction : up, down
+ros2 service call /step_control task_msgs/srv/StepControl "{floor: 2, direction: up}"
+
+# camera control service call
+# data : True / False
+ros2 service call /camera_control std_srvs/srv/SetBool "{data: True}"
+```
+
+**Server test Service**
+```sh
+# waypoint move service call
+# location : I1,I2,I1 / O1,O2,O3 / P1,P2,P3 / R1,R2 / A1,A2 / B1,B2 / C1,C2
+# lift : Up, Down
+ros2 service call /allocate_task_92 task_msgs/srv/AllocateTask "{location: "I2", lift: 'Up'}"
+```
+
+| [![Video 1](https://img.youtube.com/vi/8Qt1J9MkPb4/sddefault.jpg)](https://youtu.be/8Qt1J9MkPb4) | [![Video 2](https://img.youtube.com/vi/RSHB1A6I8J8/sddefault.jpg)](https://youtu.be/RSHB1A6I8J8) |
+|:---:|:---:|
+| <div align="center">[ArUCo 3D Pose Estimation](https://youtu.be/8Qt1J9MkPb4)</div> | <div align="center">[Human Following Robot](https://youtu.be/RSHB1A6I8J8)</div> |
+
+
