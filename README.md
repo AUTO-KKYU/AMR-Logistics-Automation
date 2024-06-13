@@ -15,6 +15,8 @@
       - [2.3.1. Camera Calibration](#231-camera-calibration)
       - [2.3.2. ArUCo Navigation](#232-aruco-navigation)
     + [2.4. Human Following](#24-human-following)
+  * [3. ✅Prerequisite](#3-prerequisite)
+
 
 ## 1. 🤖Project Introduction
 **Duration: 2024.04.17 - 2024.06.13**
@@ -75,3 +77,76 @@
 
 ### 2.4. Human Following
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/eeb94530-05e6-4cb7-ba7e-3fccffb6b9e1">
+
+## 3. ✅Prerequisite
+
+**How to install ROS2 Humble on PC [Ubuntu 22.04]**
+- Follow the guidelines within the site
+    - environment : https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+    - dev tools : https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools
+    - colcon : https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#install-colcon
+
+**ArUCo version on OpenCV**
+```sh
+pip install opencv-contrib-python==4.7.0.68 opencv-python==4.7.0.68
+```
+
+**Raspberry pi 4 GPIO settings**
+```sh
+# GPIO 그룹 설정
+sudo groupadd gpio
+# 사용자를 gpio 그룹에 추가
+sudo usermod -aG gpio kkyu_rasp
+# udev 규칙 파일 설정
+sudo nano /etc/udev/rules.d/99-gpio.rules
+# udev 규칙 내용 작성
+SUBSYSTEM=="gpio*", PROGRAM="/bin/sh -c '\\
+chown -R root:gpio /sys/class/gpio && chmod -R 770 /sys/class/gpio;\\
+chown -R root:gpio /sys/devices/virtual/gpio && chmod -R 770 /sys/devices/virtual/gpio;\\
+chown -R root:gpio /sys$devpath && chmod -R 770 /sys$devpath\\
+'"
+# udev 규칙 적용
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+sudo reboot now
+```
+
+**Raspberry pi 4 permission settings**
+```sh
+sudo chown root:gpio /dev/gpiomem
+sudo chmod g+rw /dev/gpiomem
+sudo chmod a+rw /dev/i2c-* 
+```
+
+**Raspberry pi 4 camera settings**
+```sh
+sudo chmod 777 /dev/video0
+```
+
+**Websocket Dependency**
+```sh
+pip install websocket-client
+pip install PyQt5 websocket-client
+```
+
+**Others**
+```sh
+sudo apt install ros-humble-test-msgs
+```
+
+**.bashrc settings**
+```sh
+echo "Humble is activated.!"
+source /opt/ros/humble/setup.bash
+echo "Minibot is activated.!"
+source ~/ros-repo-2/robot/install/local_setup.bash
+echo "Server is activated.!"
+source ~/ros-repo-2/server/install/local_setup.bash
+echo "ROS_DOMAIN_ID is set 213"  # 각 로봇에 대한 ID : 213, 214, 215
+export ROS_DOMAIN_ID=213
+
+sudo chmod 777 /dev/video0
+sudo chown root:gpio /dev/gpiomem
+sudo chmod g+rw /dev/gpiomem
+sudo chmod a+rw /dev/i2c-*
+```
