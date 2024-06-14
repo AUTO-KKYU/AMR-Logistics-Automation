@@ -3,6 +3,15 @@
     <img src="https://github.com/addinedu-ros-4th/ros-repo-2/assets/118419026/dd1da530-6c66-4815-94ef-1b23f385e5c4" width="700" height="300">
 </div>
 
+<div align="center">
+
+| [![Video 4](https://img.youtube.com/vi/72EWf1t_NVw/sddefault.jpg)](https://youtu.be/72EWf1t_NVw) |
+|:---:|
+| [최종 시연 영상](https://youtu.be/72EWf1t_NVw) |
+
+</div>
+
+
 ## Table of Contents
   * [1. 🤖Project Introduction](#1-project-introduction)
     + [1.1. Project Overview](#11-project-overview)
@@ -269,8 +278,3 @@ ros2 service call /allocate_task_92 task_msgs/srv/AllocateTask "{location: "I2",
 | [![Video 1](https://img.youtube.com/vi/8Qt1J9MkPb4/sddefault.jpg)](https://youtu.be/8Qt1J9MkPb4) | [![Video 2](https://img.youtube.com/vi/RSHB1A6I8J8/sddefault.jpg)](https://youtu.be/RSHB1A6I8J8) |
 |:---:|:---:|
 | <div align="center">[ArUCo 3D Pose Estimation](https://youtu.be/8Qt1J9MkPb4)</div> | <div align="center">[Human Following Robot](https://youtu.be/RSHB1A6I8J8)</div> |
-
-| [![Video 4](https://img.youtube.com/vi/72EWf1t_NVw/sddefault.jpg)](https://youtu.be/72EWf1t_NVw) |
-|:---:|
-| <div align="center">[최종 시연 영상](https://youtu.be/72EWf1t_NVw)</div> |
-
