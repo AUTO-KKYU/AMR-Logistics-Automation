@@ -270,9 +270,7 @@ ros2 service call /allocate_task_92 task_msgs/srv/AllocateTask "{location: "I2",
 |:---:|:---:|
 | <div align="center">[ArUCo 3D Pose Estimation](https://youtu.be/8Qt1J9MkPb4)</div> | <div align="center">[Human Following Robot](https://youtu.be/RSHB1A6I8J8)</div> |
 
-| [![Video 3](https://img.youtube.com/vi/fwYIjNJiysk/sddefault.jpg)](https://youtu.be/fwYIjNJiysk) | |
-|:---:|---|
-| <div align="center">[INBOUND Process](https://youtu.be/fwYIjNJiysk)</div> | |
-| | |
-
+| [![Video 4](https://img.youtube.com/vi/72EWf1t_NVw/sddefault.jpg)](https://youtu.be/72EWf1t_NVw) |
+|:---:|
+| <div align="center">[최종 시연 영상](https://youtu.be/72EWf1t_NVw)</div> |
 
