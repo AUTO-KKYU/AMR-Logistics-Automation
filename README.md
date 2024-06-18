@@ -17,16 +17,19 @@
   * [1. 🤖Project Introduction](#1-project-introduction)
     + [1.1. Project Overview](#11-project-overview)
     + [1.2. Project Position](#12-project-position)
-    + [1.3. Tech Stack](#13-tech-stack)
-    + [1.4. Reference](#14-reference)
+    + [1.3. Project Process](#13-project-process)
+    + [1.4. Tech Stack](#14-tech-stack)
+    + [1.5. Reference](#15-reference)
   * [2. 📋Role Contributions](#2-role-contributions)
     + [2.1. System Architecture](#21-system-architecture)
     + [2.2. Hardware Architecture](#22-hardware-architecture)
     + [2.3. Software Architecture](#23-software-architecture)
-    + [2.4. 3D Pose Estimation](#24-3d-pose-estimation)
-      - [2.4.1. Camera Calibration](#241-camera-calibration)
-      - [2.4.2. ArUCo Navigation](#242-aruco-navigation)
-    + [2.5. Human Following](#25-human-following)
+    + [2.4. ROS MAP Localization](#24-ros-map-localization)
+      - [2.4.1. Nav2 Parameter](#241-nav2-parameter)
+    + [2.5. 3D Pose Estimation](#25-3d-pose-estimation)
+      - [2.5.1. Camera Calibration](#251-camera-calibration)
+      - [2.5.2. ArUCo Navigation](#252-aruco-navigation)
+    + [2.6. Human Following](#26-human-following)
   * [3. ✅Prerequisite](#3-prerequisite)
   * [4. ⏩Usage](#4-usage)
 
@@ -55,15 +58,17 @@
     <tr>
       <td style="text-align:center;">DONG GYU KIM</td>
       <td style="text-align:center;">Team Member</td>
-      <td>- ArUco Navigation <br> - DL based Human Following Robot <br> - Analysis User/System Requirement <br> - Architecture and Algorithm Design <br> - Setting up Driving Environment <br> - Confluence Management </td>
+      <td>- SLAM & Navigation <br> - PID Control based ArUCo Navigation <br> - DL based Human Following Robot <br> - Analysis User/System Requirement <br> - Architecture and Algorithm Design <br> - Setting up Driving Environment <br> - Confluence Management </td>
     </tr>
   </tbody>
 </table>
 
 
+### 1.3. Project Process
+<img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/127ceca4-7bc8-4648-8977-cc6c64aa224b">
 
 
-### 1.3. Tech Stack
+### 1.4. Tech Stack
 ||||
 |:---:|:---|:---|
 |**Develop EnV**|<img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white"> <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white">|
@@ -71,7 +76,7 @@
 |**H/W**|<img src="https://img.shields.io/badge/-RaspberryPi 4-C51A4A?style=for-the-badge&logo=Raspberry-Pi"> <img src="https://img.shields.io/badge/-Arduino Mega-00979D?style=for-the-badge&logo=Arduino&logoColor=white">|
 |**COMMUNICATION**|<img src="https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white"> <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white">  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">|
 
-### 1.4. Reference
+### 1.5. Reference
 - Presentation : https://docs.google.com/presentation/d/1zWYl33Bm2CBIjSyX9Pe78l9VBHL1Ysp2sf91z0QALls/edit?usp=drive_link
 - Additional Information, Contact Email: dknjy3313@gmail.com
 
@@ -87,16 +92,28 @@
 ### 2.3. Software Architecture
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/e0b8a28a-6034-4173-8754-e2a6924e7939">
 
+### 2.4. ROS MAP Localization
+<img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/47926abb-47b7-40af-8efc-5de63fe975a1">
 
-### 2.4. 3D Pose Estimation
+#### 2.4.1. Nav2 Parameter
+*- nav2_params.yaml*
+    - Purpose : To apply an appropriate environmental representation for the robot.
+    
+| Parameter           | Costmap Type | Before                                | After                                 |
+|---------------------|--------------|---------------------------------------|---------------------------------------|
+| **inflation_layer** | Local        | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.25` | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 1.0`<br>`inflation_radius: 0.15` |
+| **inflation_layer** | Global       | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.35` | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.15` |
 
-#### 2.4.1. Camera Calibration
+
+### 2.5. 3D Pose Estimation
+
+#### 2.5.1. Camera Calibration
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/ed869dcf-58b9-48e1-8ad6-d9a389a769ce">
 
-#### 2.4.2. ArUCo Navigation
+#### 2.5.2. ArUCo Navigation
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/acb06277-3130-40a1-b1d1-ec2a3675a078">
 
-### 2.5. Human Following
+### 2.6. Human Following
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/eeb94530-05e6-4cb7-ba7e-3fccffb6b9e1">
 
 ## 3. ✅Prerequisite
