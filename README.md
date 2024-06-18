@@ -45,7 +45,7 @@
 | **Low-Level Design (Module, Data Structure, Algorithm)** | 2024.05.20 - 2024.05.25      |
 | **H/W Production and Testing**           | 2024.05.15 - 2024.05.23      |
 | **Implementation**                       | 2024.05.06 - 2024.06.11      |
-| **Verification**                         | 2024.05.27 - 2024.06.11      |
+| **Verification & Validation**                         | 2024.05.27 - 2024.06.11      |
 | **Presentation Preparation and Finalization** | 2024.06.08 - 2024.06.13      |
 
 
