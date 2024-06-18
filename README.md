@@ -37,6 +37,18 @@
 ## 1. 🤖Project Introduction
 **Duration: 2024.04.17 - 2024.06.13**
 
+| Phase                                    | Dates                        |
+|------------------------------------------|------------------------------|
+| **Project Plan**                         | 2024.04.15 - 2024.04.30      |
+| **Project Design**                       | 2024.05.01 - 2024.05.15      |
+| **High-Level Design (DB, Interface)**    | 2024.05.15 - 2024.05.21      |
+| **Low-Level Design (Module, Data Structure, Algorithm)** | 2024.05.20 - 2024.05.25      |
+| **H/W Production and Testing**           | 2024.05.15 - 2024.05.23      |
+| **Implementation**                       | 2024.05.06 - 2024.06.11      |
+| **Verification**                         | 2024.05.27 - 2024.06.11      |
+| **Presentation Preparation and Finalization** | 2024.06.08 - 2024.06.13      |
+
+
 ### 1.1. Project Overview
 - Utilizing forklift frame-based autonomous driving robots in logistics processes such as inbound, outbound, and collection.
 - Implementing a multi-robot control system to enhance the efficiency of logistics operations.
