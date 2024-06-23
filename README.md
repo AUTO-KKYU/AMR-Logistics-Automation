@@ -107,6 +107,15 @@
 ### 2.4. ROS MAP Localization
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/47926abb-47b7-40af-8efc-5de63fe975a1">
 
+- GIMP Tool : ROS MAP Edit
+```sh
+sudo apt-get install gimp
+gimp
+```
+- choose pgm file & use Lasso Tool
+<img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/e1b13aa6-233f-44a0-8731-5b5d0a101e0a">
+
+
 #### 2.4.1. Nav2 Parameter
 *- nav2_params.yaml*
     - Purpose : To apply an appropriate environmental representation for the robot.
