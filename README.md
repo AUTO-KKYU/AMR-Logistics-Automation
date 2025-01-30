@@ -1,85 +1,103 @@
-# AMR-Based Logistics Center Automation Platform Service
+# AMR Logistics Automation System
+<div align="center">
+    <img src="https://github.com/addinedu-ros-4th/ros-repo-2/assets/118419026/dd1da530-6c66-4815-94ef-1b23f385e5c4" width="700" height="300">
+</div>
 
 <div align="center">
-
-| [![Video 4](https://img.youtube.com/vi/72EWf1t_NVw/sddefault.jpg)](https://youtu.be/72EWf1t_NVw) |
-|:---:|
-| [Final Demonstration Video](https://youtu.be/72EWf1t_NVw) |
 
 </div>
 
 ## Table of Contents
-  * [1. 🤖Project Introduction](#1-project-introduction)
-    + [1.1. Project Overview](#11-project-overview)
-    + [1.2. Project Position](#12-project-position)
-    + [1.3. Project Process](#13-project-process)
-    + [1.4. Tech Stack](#14-tech-stack)
-    + [1.5. Reference](#15-reference)
-  * [2. 📋Role Contributions](#2-role-contributions)
-    + [2.1. System Architecture](#21-system-architecture)
-    + [2.2. Hardware Architecture](#22-hardware-architecture)
-    + [2.3. Software Architecture](#23-software-architecture)
+  * [1. 🤖프로젝트 소개](#1-프로젝트-소개)
+    + [1.1. 프로젝트 개요](#11-프로젝트-개요)
+    + [1.2. 프로젝트 역할](#12-프로젝트-역할)
+    + [1.3. 기술 스택](#13-기술-스택)
+  * [2. 📋프로젝트 역할 기여](#2-프로젝트-역할-기여)
+    + [2.1. 시스템 아키텍처 설계](#21-시스템-아키텍처-설계)
+    + [2.2. 하드웨어 아키텍처 설계](#22-하드웨어-아키텍처-설계)
+    + [2.3. 소프트웨어 아키텍처 설계](#23-소프트웨어-아키텍처-설계)
     + [2.4. ROS MAP Localization](#24-ros-map-localization)
-      - [2.4.1. Nav2 Parameter](#241-nav2-parameter)
+      - [2.4.1. Nav2 Parameter 조정](#241-nav2-parameter-조정)
     + [2.5. 3D Pose Estimation](#25-3d-pose-estimation)
       - [2.5.1. Camera Calibration](#251-camera-calibration)
       - [2.5.2. ArUCo Navigation](#252-aruco-navigation)
     + [2.6. Human Following](#26-human-following)
-  * [3. ✅Prerequisite](#3-prerequisite)
-  * [4. ⏩Usage](#4-usage)
+  * [3. ✅필수 조건](#3-필수-조건)
+  * [4. ⏩실행 방법](#4-실행-방법)
 
+## 1. 🤖프로젝트 소개
+**Duration: 2024.04.17 - 2024.06.13**
 
-## 1. 🤖Project Introduction
-
-**Grand Prize** in AI Autonomous Driving Robot Competition 
-<br>
-Team Name : **물류왕 김탁규** 
-<br>
-Project Duration : **2024.04.17 - 2024.06.13** 
-<br>
-
-Presentation Link
-https://docs.google.com/presentation/d/1zWYl33Bm2CBIjSyX9Pe78l9VBHL1Ysp2sf91z0QALls/edit?usp=drive_link
+AI 자율주행 로봇 4기 수강생 중 **최우수상** <br>
+팀 이름 : **물류왕 김탁규** <br>
+프로젝트 기간 : **2024.04.17 - 2024.06.13** <br>
+발표자료 : https://docs.google.com/presentation/d/1zWYl33Bm2CBIjSyX9Pe78l9VBHL1Ysp2sf91z0QALls/edit?usp=drive_link
 
 | Phase                                    | Dates                        |
 |------------------------------------------|------------------------------|
 | **Project Plan**                         | 2024.04.15 - 2024.04.30      |
 | **Project Design**                       | 2024.05.01 - 2024.05.15      |
+| **프로젝트 계획(UR/SR)**                         | 2024.04.15 - 2024.04.30      |
+| **프로젝트 설계**                       | 2024.05.01 - 2024.05.15      |
 | **High-Level Design (DB, Interface)**    | 2024.05.15 - 2024.05.21      |
 | **Low-Level Design (Module, Data Structure, Algorithm)** | 2024.05.20 - 2024.05.25      |
 | **H/W Production and Testing**           | 2024.05.15 - 2024.05.23      |
 | **Implementation**                       | 2024.05.06 - 2024.06.11      |
-| **Verification**                         | 2024.05.27 - 2024.06.11      |
 | **Verification & Validation**                         | 2024.05.27 - 2024.06.11      |
 | **Presentation Preparation and Finalization** | 2024.06.08 - 2024.06.13      |
+| **하드웨어 제작 및 테스트**           | 2024.05.15 - 2024.05.23      |
+| **소프트웨어 구현**                       | 2024.05.06 - 2024.06.11      |
+| **구현 검증(Validation of program/debugging)**    | 2024.05.27 - 2024.06.11      |
+| **발표 자료 제작 및 Clean Code** | 2024.06.08 - 2024.06.13      |
 
+### 1.1. 프로젝트 개요
+- 입고, 출고, 수집 등 물류 프로세스에서 Fork Lift 프레임 기반 자율주행 로봇을 활용.
+- 물류 운영 효율성을 높이기 위해 다중 로봇 제어 시스템 구현.
+- 인간-로봇 상호작용(HRI)을 통한 물류 센터 운영 최적화.
+- 입고 제품 등록, 선반 재고 관리, 소비자 주문 처리 시스템 등 구현.
 
-### 1.1. Project Overview
-- Utilizing forklift frame-based autonomous driving robots in logistics processes such as inbound, outbound, and collection.
-- Implementing a multi-robot control system to enhance the efficiency of logistics operations.
-- Optimizing logistics center operations through Human-Robot Interaction (HRI).
-- Implementing systems for inbound product registration, shelf inventory management, and consumer order processing.
+<img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/25960a9e-af9d-46dc-9f70-1cfc5d5e6168">
 
-  
-### 1.2. Project Position
+### 1.2. 프로젝트 역할
 <table>
   <thead>
     <tr>
-      <th style="text-align:center;">Name</th>
-      <th style="text-align:center;">Classification</th>
-      <th style="text-align:center;">Role</th>
-    </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:center;">DONG GYU KIM</td>
+      <td style="text-align:center;">송용탁</td>
+      <td style="text-align:center;">Team Leader</td>
+      <td>- 로봇 시스템 통합 및 제어 <br> - 로봇 메커니즘 설계 <br> - SLAM & NAV <br> - 로봇 주행 환경 구축 </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">김동규</td>
       <td style="text-align:center;">Team Member</td>
-      <td>- SLAM & Navigation <br> - PID Control based ArUCo Navigation <br> - DL based Human Following Robot <br> - Analysis User/System Requirement <br> - Architecture and Algorithm Design <br> - Setting up Driving Environment <br> - Confluence Management </td>
+      <td>- ArUco 기반 정밀 Navigation <br> - 딥러닝 기반 Human Following Robot  <br> - 로봇 주행 환경 구축 <br> - 프로젝트 Confluence 관리 </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">유겸희</td>
+      <td style="text-align:center;">Team Member</td>
+      <td>- SLAM <br> - 관리자 GUI 설계 <br> - 데이터베이스 구축 <br> - 로봇 주행 환경 구축  </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">이재혁</td>
+      <td style="text-align:center;">Team Member</td>
+      <td>- SLAM & NAV <br> - 경로 주행 알고리즘 설계 <br> - 다중 로봇 제어시스템 구현 <br> - 로봇 주행 환경 구축  </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">장하린</td>
+      <td style="text-align:center;">Team Member</td>
+      <td>- SLAM <br> - 관리자 GUI 설계 <br> - 사용자(소비자) GUI 설계 <br> - 데이터베이스 구축 </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">최가은</td>
+      <td style="text-align:center;">Team Member</td>
+      <td>- 다중 로봇 업무 관리 스케줄링 <br> - 로봇 통신 서버 구축 <br> - 프로젝트 GITHUB 및 JIRA 관리 </td>
     </tr>
   </tbody>
 </table>
 
-### 1.3. Tech Stack
+### 1.3. 기술 스택
 ||||
 |:---:|:---|:---|
 |**Develop EnV**|<img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white"> <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white">|
@@ -87,39 +105,25 @@ https://docs.google.com/presentation/d/1zWYl33Bm2CBIjSyX9Pe78l9VBHL1Ysp2sf91z0QA
 |**H/W**|<img src="https://img.shields.io/badge/-RaspberryPi 4-C51A4A?style=for-the-badge&logo=Raspberry-Pi"> <img src="https://img.shields.io/badge/-Arduino Mega-00979D?style=for-the-badge&logo=Arduino&logoColor=white">|
 |**COMMUNICATION**|<img src="https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white"> <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white">  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">|
 
-## 2. 📋Role Contributions
+## 2. 📋프로젝트 역할 기여
 
-### 2.1. System Architecture
+### 2.1. 시스템 아키텍처 설계
 
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/9a9e5e40-1a1d-45e5-b85e-094c319c2f4b">
 
-### 2.2. Hardware Architecture
+### 2.2. 하드웨어 아키텍처 설계
 <img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/5f911581-c86e-44b8-a48b-21adc2f979da">
 
-### 2.3. Software Architecture
+### 2.3. 소프트웨어 아키텍처 설계
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/e0b8a28a-6034-4173-8754-e2a6924e7939">
 
 ### 2.4. ROS MAP Localization
-<img src= "https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/47926abb-47b7-40af-8efc-5de63fe975a1">
-
-- GIMP Tool : ROS MAP Edit
-```sh
-sudo apt-get install gimp
-gimp
-```
-- choose pgm file & use Lasso Tool
+@@ -116,7 +128,7 @@
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/e1b13aa6-233f-44a0-8731-5b5d0a101e0a">
 
-
-#### 2.4.1. Nav2 Parameter Adjustment
+#### 2.4.1. Nav2 Parameter 조정
 *- nav2_params.yaml*
     - Purpose : To apply an appropriate environmental representation for the robot.
-    
-| Parameter           | Costmap Type | Before                                | After                                 |
-|---------------------|--------------|---------------------------------------|---------------------------------------|
-| **inflation_layer** | Local        | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.25` | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 1.0`<br>`inflation_radius: 0.15` |
-| **inflation_layer** | Global       | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.35` | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.15` |
-
 
 ### 2.5. 3D Pose Estimation
 
@@ -132,80 +136,13 @@ gimp
 ### 2.6. Human Following
 <img src="https://github.com/AUTO-KKYU/AMR-Logistics-Automation/assets/118419026/eeb94530-05e6-4cb7-ba7e-3fccffb6b9e1">
 
-## 3. ✅Prerequisite
+## 3. ✅필수 조건
 
 **How to install ROS2 Humble on PC [Ubuntu 22.04]**
 - Follow the guidelines within the site
-    - environment : https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
-    - dev tools : https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html#install-development-tools-and-ros-tools
-    - colcon : https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#install-colcon
+  -  https://github.com/AUTO-KKYU/ROS2-Study
 
-**ArUCo version on OpenCV**
-```sh
-pip install opencv-contrib-python==4.7.0.68 opencv-python==4.7.0.68
-```
-
-**Raspberry pi 4 GPIO settings**
-```sh
-# GPIO 그룹 설정
-sudo groupadd gpio
-# 사용자를 gpio 그룹에 추가
-sudo usermod -aG gpio kkyu_rasp
-# udev 규칙 파일 설정
-sudo nano /etc/udev/rules.d/99-gpio.rules
-# udev 규칙 내용 작성
-SUBSYSTEM=="gpio*", PROGRAM="/bin/sh -c '\\
-chown -R root:gpio /sys/class/gpio && chmod -R 770 /sys/class/gpio;\\
-chown -R root:gpio /sys/devices/virtual/gpio && chmod -R 770 /sys/devices/virtual/gpio;\\
-chown -R root:gpio /sys$devpath && chmod -R 770 /sys$devpath\\
-'"
-# udev 규칙 적용
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-sudo reboot now
-```
-
-**Raspberry pi 4 permission settings**
-```sh
-sudo chown root:gpio /dev/gpiomem
-sudo chmod g+rw /dev/gpiomem
-sudo chmod a+rw /dev/i2c-* 
-```
-
-**Raspberry pi 4 camera settings**
-```sh
-sudo chmod 777 /dev/video0
-```
-
-**Websocket Dependency**
-```sh
-pip install websocket-client
-pip install PyQt5 websocket-client
-```
-
-**Others**
-```sh
-sudo apt install ros-humble-test-msgs
-```
-
-**.bashrc settings**
-```sh
-echo "Humble is activated.!"
-source /opt/ros/humble/setup.bash
-echo "Minibot is activated.!"
-source ~/ros-repo-2/robot/install/local_setup.bash
-echo "Server is activated.!"
-source ~/ros-repo-2/server/install/local_setup.bash
-echo "ROS_DOMAIN_ID is set 213"  # 각 로봇에 대한 ID : 213, 214, 215
-export ROS_DOMAIN_ID=213
-
-sudo chmod 777 /dev/video0
-sudo chown root:gpio /dev/gpiomem
-sudo chmod g+rw /dev/gpiomem
-sudo chmod a+rw /dev/i2c-*
-```
-
-## 4. ⏩Usage
+## 4. ⏩실행 방법
 
 **General Setup**
 
@@ -223,7 +160,7 @@ source ./install/local_setup.bash
 
 *- Recommend: Use the SSH method for remote access*
 - ex) ssh -X your_rasp_name@your_rasp_ip
-  
+
 **Robot 1/2/3 PC (Raspberry Pi PC)**
 - Domain ID : 91 / 92 / 93
 
