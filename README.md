@@ -131,7 +131,12 @@ AI 자율주행 로봇 4기 수강생 중 **최우수상** <br>
 
 #### 2.4.1. Nav2 Parameter 조정
 *- nav2_params.yaml*
-    - Purpose : To apply an appropriate environmental representation for the robot.
+     - Purpose : To apply an appropriate environmental representation for the robot.
+ 
+ | Parameter           | Costmap Type | Before                                | After                                 |
+ |---------------------|--------------|---------------------------------------|---------------------------------------|
+ | **inflation_layer** | Local        | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.25` | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 1.0`<br>`inflation_radius: 0.15` |
+ | **inflation_layer** | Global       | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.35` | `plugin: "nav2_costmap_2d::InflationLayer"`<br>`cost_scaling_factor: 3.0`<br>`inflation_radius: 0.15` |
 
 ### 2.5. 3D Pose Estimation
 
